@@ -4,7 +4,7 @@
 
     <groupId>edu.university.springboot.exercise</groupId>
     <artifactId>SpringBootExercise</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <parent>
@@ -16,6 +16,8 @@
     <modules>
         <module>springboot-intercepter</module>
         <module>springboot-swagger</module>
+        <module>springboot-security</module>
+        <module>springboot-file-upload</module>
     </modules>
 
     <properties>
@@ -27,6 +29,7 @@
         <version.h2>1.4.196</version.h2>
         <version.modelmapper>0.7.5</version.modelmapper>
         <version.inject>1</version.inject>
+        <version.logback>1.2.3</version.logback>
         <version.junit>4.12</version.junit>
         <version.lombok>1.16.8</version.lombok>
     </properties>
@@ -35,11 +38,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${version.springboot}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>${version.springboot}</version>
         </dependency>
         <dependency>
@@ -60,14 +58,10 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${version.springfox}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${version.springfox}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>${version.springboot}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -78,11 +72,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${version.jstl}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${version.h2}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -125,6 +114,14 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 
 </project>

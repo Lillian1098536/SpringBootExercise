@@ -16,4 +16,5 @@ public class SwaggerController {
     public String sayHello() {
         return "Swagger Hello World!";
     }
+
 }

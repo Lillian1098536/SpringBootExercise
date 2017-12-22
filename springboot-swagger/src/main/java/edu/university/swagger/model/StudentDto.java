@@ -1,9 +1,9 @@
 package edu.university.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -13,7 +13,7 @@ public class StudentDto implements Serializable {
 
     private Long id;
     private String name;
-    @NotNull
+    @JsonIgnore
     private LocalDateTime createdAt = LocalDateTime.now();
 
 }
