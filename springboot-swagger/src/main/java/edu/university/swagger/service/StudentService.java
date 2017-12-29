@@ -1,6 +1,7 @@
 package edu.university.swagger.service;
 
 import edu.university.swagger.dao.StudentDao;
+import edu.university.swagger.exception.StudentNotFoundException;
 import edu.university.swagger.model.Student;
 import edu.university.swagger.model.StudentDto;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,9 @@ public class StudentService {
         List<StudentDto> studentDtos;
         try {
             List<Student> students = studentDao.findAll();
+            if (students.isEmpty()) {
+                throw new StudentNotFoundException(); // return 200
+            }
             studentDtos = students.stream().map(s -> modelMapper.map(s, StudentDto.class)).collect(Collectors.toList());
         } catch (Exception ex) {
             log.debug("fail to fetchAllStudents={}", ex.getMessage());
@@ -41,6 +45,9 @@ public class StudentService {
         StudentDto studentDto;
         try {
             Student student = studentDao.findOne(id);
+            if (student == null) {
+                throw new StudentNotFoundException(); // return 200
+            }
             studentDto = modelMapper.map(student, StudentDto.class);
         } catch (Exception ex) {
             log.debug("fail to fetchStudentById={}", ex.getMessage());
