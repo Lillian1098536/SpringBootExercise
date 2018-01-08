@@ -18,6 +18,7 @@
         <module>springboot-swagger</module>
         <module>springboot-security</module>
         <module>springboot-file-upload</module>
+        <module>SpringBootCustomerService</module>
     </modules>
 
     <properties>
@@ -33,6 +34,7 @@
         <version.junit>4.12</version.junit>
         <version.lombok>1.16.8</version.lombok>
         <version.json>20090211</version.json>
+        <version.mysql>6.0.6</version.mysql>
     </properties>
 
     <dependencies>
